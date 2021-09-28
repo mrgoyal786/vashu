@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-4">
+    {% for books in eBooks %}
+    <div class="col">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ books.cover_url }}" class="card-img-top" alt="..." height="200" >
+            <div class="card-body">
+                <h5 class="card-title">{{ books.title }}</h5>
+                <p class="card-text">Price : ₹ {{ books.price }} /-</p>
+                <form class="form" action="cart_add_item/" method="post">
+                    <button class="btn btn-primary" type="submit" name="book_id" value ="{{ books.id }}">Add to Cart</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
